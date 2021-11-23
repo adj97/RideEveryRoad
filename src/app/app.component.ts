@@ -10,6 +10,8 @@ export class AppComponent {
   title = 'Ride Every Road';
   @ViewChild('map', {static: true}) mapElement: any;
   map: google.maps.Map;
+  strava_oauth_clientid = '49912'
+  strava_oauth_url = `http://www.strava.com/oauth/authorize?client_id=${this.strava_oauth_clientid}str&response_type=code&redirect_uri=http://localhost:4200/exchange_token&approval_prompt=force&scope=read`
 
   ngOnInit(): void {
     const mapProperties = {
@@ -21,6 +23,7 @@ export class AppComponent {
   }
 
   StravaOAuth(): void {
-    window.alert("Strava OAuth");
+    window.alert(this.strava_oauth_url.toString());
+    window.location.href = this.strava_oauth_url
   }
 }
