@@ -20,4 +20,7 @@ export class AppComponent {
     this.map = new google.maps.Map(this.mapElement.nativeElement,    mapProperties);
   }
 
+  StravaOAuth(): void {
+    window.alert("Strava OAuth");
+  }
 }
