@@ -9,8 +9,6 @@ import { } from 'googlemaps';
 })
 export class AppComponent {
 
-  constructor(private route: ActivatedRoute) { }
-
   title = 'Ride Every Road';
   @ViewChild('map', {static: true}) mapElement: any;
   map: google.maps.Map;
