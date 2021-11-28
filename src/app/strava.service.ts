@@ -25,7 +25,7 @@ export class StravaService {
       });
   }
 
-  sendGetRequest(_access_token: string) {
+  async sendGetRequest(_access_token: string) {
     const headerDict = {
       'Authorization': 'Bearer ' + _access_token,
     };
@@ -36,10 +36,9 @@ export class StravaService {
 
     const url = 'https://www.strava.com/api/v3/athlete/activities';
 
-    return this.httpClient
+    return await this.httpClient
       .get(url, requestOptions)
-      .subscribe(res => {
-        console.log(res);
-      })
+      .toPromise()
+      .then((res: any) => { return res })
   }
 }
