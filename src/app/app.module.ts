@@ -10,6 +10,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { MapPageComponent } from './map-page/map-page.component';
 
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +23,8 @@ import { MapPageComponent } from './map-page/map-page.component';
     MatButtonModule,
     BrowserAnimationsModule,
     RouterModule.forRoot([]),
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
