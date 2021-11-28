@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { AppComponent } from './app.component';
     BrowserModule,
     MatButtonModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot([])
+    RouterModule.forRoot([]),
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
