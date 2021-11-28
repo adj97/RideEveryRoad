@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
-import {} from 'googlemaps';
+import { ActivatedRoute } from '@angular/router';
+import { } from 'googlemaps';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +8,9 @@ import {} from 'googlemaps';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  constructor(private route: ActivatedRoute) { }
+
   title = 'Ride Every Road';
   @ViewChild('map', {static: true}) mapElement: any;
   map: google.maps.Map;
@@ -23,7 +27,6 @@ export class AppComponent {
   }
 
   StravaOAuth(): void {
-    window.alert(this.strava_oauth_url.toString());
     window.location.href = this.strava_oauth_url
   }
 }
