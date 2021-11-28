@@ -4,6 +4,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { MapPageComponent } from './map-page/map-page.component';
 
 const routes: Routes = [
+  { path: '', component: LandingPageComponent },
   { path: 'exchange_token', component: LandingPageComponent },
   { path: 'map', component: MapPageComponent}
 ];
