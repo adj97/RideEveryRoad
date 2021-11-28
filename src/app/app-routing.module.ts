@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
+import { MapPageComponent } from './map-page/map-page.component';
 
 const routes: Routes = [
-  { path: 'exchange_token', component: AppComponent }
+  { path: 'exchange_token', component: LandingPageComponent },
+  { path: 'map', component: MapPageComponent}
 ];
 
 @NgModule({

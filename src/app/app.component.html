@@ -1,20 +1,14 @@
 <div class="content" role="main">
 
-    <h1>{{title}}</h1>
-
-    <br>
-
-    <div #map style="width:100%;height:400px"></div>
-
-    <br>
-
-    <button mat-raised-button (click)="StravaOAuth()">Strava OAuth</button>
-
-    <br>
-
-    <!-- Footer -->
-    <footer>
-        <a href="https://github.com/adj97/RideEveryRoad" target="_blank" rel="noopener"> GitHub</a>
-    </footer>
+    <h1>Angular Routes</h1>
+    <!-- This nav gives you links to click, which tells the router which route to use (defined in the routes constant in  AppRoutingModule) -->
+    <nav>
+        <ul>
+            <li><a routerLink="/exchange_token" routerLinkActive="active">Route: exchange_token</a></li>
+            <li><a routerLink="/map" routerLinkActive="active">Route: map</a></li>
+        </ul>
+    </nav>
+    <!-- The routed views render in the <router-outlet>-->
+    <router-outlet></router-outlet>
 
 </div>

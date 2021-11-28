@@ -1,6 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { } from 'googlemaps';
 
 @Component({
   selector: 'app-root',
@@ -14,26 +13,11 @@ export class AppComponent{
 
   constructor(private activatedRoute: ActivatedRoute) {}
 
-  title = 'Ride Every Road';
-  @ViewChild('map', {static: true}) mapElement: any;
-  map: google.maps.Map;
-  strava_oauth_clientid = '49912'
-  strava_oauth_url = `http://www.strava.com/oauth/authorize?client_id=${this.strava_oauth_clientid}str&response_type=code&redirect_uri=http://localhost:4200/exchange_token&approval_prompt=force&scope=read`
-
   ngOnInit(): void {
-    const mapProperties = {
-         center: new google.maps.LatLng(51.507570, -0.127811),
-         zoom: 13,
-         mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-    this.map = new google.maps.Map(this.mapElement.nativeElement,    mapProperties);
     this.activatedRoute.queryParams.subscribe(params => {
       this.code = params.code;
       this.scope = params.scope;
     });
   }
 
-  StravaOAuth(): void {
-    window.location.href = this.strava_oauth_url
-  }
 }
