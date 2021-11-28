@@ -8,6 +8,8 @@ export class StravaService {
 
   constructor(private httpClient: HttpClient) { }
 
+  clientid = '49912';
+
   async getAccessToken(_clientid: string, _code: string){
     const body = {
       client_id: _clientid,
