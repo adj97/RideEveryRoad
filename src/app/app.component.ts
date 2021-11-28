@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,16 +7,12 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AppComponent{
 
-  code: string;
-  scope: string;
+  // show routes bool
+  nav = true;
 
-  constructor(private activatedRoute: ActivatedRoute) {}
+  title = 'Ride Every Road';
 
   ngOnInit(): void {
-    this.activatedRoute.queryParams.subscribe(params => {
-      this.code = params.code;
-      this.scope = params.scope;
-    });
   }
 
 }
