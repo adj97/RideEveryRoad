@@ -28,7 +28,8 @@ export class AppComponent{
     };
     this.map = new google.maps.Map(this.mapElement.nativeElement,    mapProperties);
     this.activatedRoute.queryParams.subscribe(params => {
-      console.log(params);
+      this.code = params.code;
+      this.scope = params.scope;
     });
   }
 
