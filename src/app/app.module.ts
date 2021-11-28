@@ -11,12 +11,14 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { MapPageComponent } from './map-page/map-page.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { ExchangetokenPageComponent } from './exchangetoken-page/exchangetoken-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingPageComponent,
-    MapPageComponent
+    MapPageComponent,
+    ExchangetokenPageComponent
   ],
   imports: [
     BrowserModule,
