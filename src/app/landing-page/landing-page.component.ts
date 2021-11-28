@@ -57,9 +57,9 @@ export class LandingPageComponent implements OnInit {
 
   access_token: string;
 
-  GetAccessToken(){
-    this.access_token = this.strava.sendPostRequest(this.clientid, this.code)
-    console.log(this.access_token)
+  async GetAccessToken(){
+    this.access_token = await this.strava.getAccessToken(this.clientid, this.code);
+    console.log(this.access_token);
   }
 
   MakeApiCall(){
