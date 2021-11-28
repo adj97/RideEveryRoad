@@ -9,7 +9,7 @@ import { StravaService } from '../strava.service';
 })
 export class LandingPageComponent implements OnInit {
 
-  constructor(private activatedRoute: ActivatedRoute, private strava: StravaService) {
+  constructor(private activatedRoute: ActivatedRoute, private stravaService: StravaService) {
   }
 
   ngOnInit(): void {
@@ -39,31 +39,36 @@ export class LandingPageComponent implements OnInit {
   GetUrlQueryParams(){
     this.activatedRoute.queryParams.subscribe(params => {
       try {
-        console.log(params);
         this.code = params.code;
         this.scope = params.scope.split(",");
       }
       catch{
         //
       }
+      console.log("Url params: code = " + this.code);
+      console.log("Url params: scope(s) = " + this.scope);
     });
   }
 
   CheckScopes(){
     if (this.scope.includes("read") && this.scope.includes("activity:read_all") && this.scope.includes("activity:read")){
-      console.log("Scopes are sufficient for the next API calls");
+      console.log("Scopes are sufficient");
+    }
+    else{
+      console.log("Insufficient scopes")
     }
   }
 
   access_token: string;
 
   async GetAccessToken(){
-    this.access_token = await this.strava.getAccessToken(this.clientid, this.code);
-    console.log(this.access_token);
+    this.access_token = await this.stravaService.getAccessToken(this.clientid, this.code);
+    console.log("Access token :" + this.access_token);
   }
 
   MakeApiCall(){
-    this.strava.sendGetRequest(this.access_token);
+    let response = this.stravaService.sendGetRequest(this.access_token);
+    console.log("API response :" + response);
   }
 
 }

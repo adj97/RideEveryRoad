@@ -6,7 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class StravaService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private httpClient: HttpClient) { }
 
   async getAccessToken(_clientid: string, _code: string){
     const body = {
@@ -15,7 +15,7 @@ export class StravaService {
       code: _code,
       grant_type: "authorization_code"
     }
-    return await this.http
+    return await this.httpClient
       .post('https://www.strava.com/api/v3/oauth/token', body)
       .toPromise()
       .then((res: any) => {
@@ -34,7 +34,7 @@ export class StravaService {
 
     const url = 'https://www.strava.com/api/v3/athlete/activities';
 
-    return this.http
+    return this.httpClient
       .get(url, requestOptions)
       .subscribe(res => {
         console.log(res);
