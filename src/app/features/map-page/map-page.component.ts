@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { } from 'googlemaps';
-import { StravaService } from '../strava.service';
+import { StravaService } from '../../core/strava-service/strava.service';
 
 @Component({
   selector: 'app-map-page',

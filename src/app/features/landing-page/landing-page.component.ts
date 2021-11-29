@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { StravaService } from '../strava.service';
+import { StravaService } from '../../core/strava-service/strava.service';
 
 @Component({
   selector: 'app-landing-page',

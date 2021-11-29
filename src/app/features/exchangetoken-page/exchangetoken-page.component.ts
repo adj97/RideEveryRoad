@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
-import { StravaService } from '../strava.service';
+import { StravaService } from '../../core/strava-service/strava.service';
 
 @Component({
   selector: 'app-exchangetoken-page',
