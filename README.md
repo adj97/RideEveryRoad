@@ -1,6 +1,6 @@
 # RideEveryRoad
 
-##[Open in StackBlitz](https://stackblitz.com/github/adj97/RideEveryRoad)
+##[Open in StackBlitz (WIP)](https://stackblitz.com/github/adj97/RideEveryRoad)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.5.
 
