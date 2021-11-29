@@ -5,7 +5,7 @@ import { StravaService } from '../../core/strava-service/strava.service';
 @Component({
   selector: 'app-exchangetoken-page',
   templateUrl: './exchangetoken-page.component.html',
-  styleUrls: ['../app.component.css']
+  styleUrls: ['../../app.component.css']
 })
 export class ExchangetokenPageComponent implements OnInit {
 

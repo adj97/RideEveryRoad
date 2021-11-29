@@ -4,7 +4,7 @@ import { StravaService } from '../../core/strava-service/strava.service';
 @Component({
   selector: 'app-landing-page',
   templateUrl: './landing-page.component.html',
-  styleUrls: ['../app.component.css']
+  styleUrls: ['../../app.component.css']
 })
 export class LandingPageComponent implements OnInit {
 
