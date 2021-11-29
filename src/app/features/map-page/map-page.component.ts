@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { } from 'googlemaps';
+import { SummaryActivity } from 'src/app/shared/models/strava/activity';
 import { StravaService } from '../../core/strava-service/strava.service';
 
 @Component({
@@ -34,12 +35,18 @@ export class MapPageComponent implements OnInit {
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapProperties);
   }
 
+  activities: SummaryActivity[] = [];
+  print: string;
+
   async MakeApiCall() {
-    let response = await this.stravaService.sendGetRequest(this.access_token);
-    console.log("API response :" + response);
-    this.htmlresponse = " - " + response.map( (o) => {return o.name}).join('\n - ')
+    let response = this.stravaService.getHeroes(this.access_token)
+    response.subscribe(activities => {
+      this.activities = activities;
+    });
   }
 
-  htmlresponse: string;
-
+  ShowResults(){
+    this.print = this.activities[0].name
+    console.log(this.activities)
+  }
 }
