@@ -2,7 +2,7 @@
 
 Latest Azure Deployment: 30/11/2021 - 14:41
 
-<a href="https://rideeveryroad.azurewebsites.net/"><button class="btn">Launch</button></a>
+<a href="https://rideeveryroad.azurewebsites.net/">Launch</a>
 
 ---
 
