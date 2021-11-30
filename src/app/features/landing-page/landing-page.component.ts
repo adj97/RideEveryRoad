@@ -30,6 +30,10 @@ export class LandingPageComponent implements OnInit {
 
     let qp = ['authorize'];
 
+    // using redirect_base_uri here as window.location.href means the oauth flow will redirect back to the current base
+    // this would mean that launching the app from localhost or stackblitz would redirect accordingly
+    // however the strava api client is restricted to one authorisation callback domain
+    // either set this to localhost or gqailggqx.github.stackblitz.io (e.g.) to use either
     let redirect_uri_components = [
       redirect_base_uri,
       'exchange_token'
