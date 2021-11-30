@@ -16,12 +16,12 @@ export class LandingPageComponent implements OnInit {
   }
 
   StravaOAuth() {
-    let oauth_url = this.BuildStravaOAuthUrl(window.location.href)
+    let redirect_base_uri = window.location.href.slice(0, -1);
+    let oauth_url = this.BuildStravaOAuthUrl(redirect_base_uri);
     window.location.href = oauth_url;
   }
 
   BuildStravaOAuthUrl(redirect_base_uri: string): string {
-
     const url_sep = [
       'https:/',
       'www.strava.com',
@@ -29,10 +29,9 @@ export class LandingPageComponent implements OnInit {
     ];
 
     let qp = ['authorize'];
-    
+
     let redirect_uri_components = [
-      'http:/',
-      'localhost:4200',
+      redirect_base_uri,
       'exchange_token'
     ];
 
@@ -50,6 +49,4 @@ export class LandingPageComponent implements OnInit {
 
     return url_sep.join('/');
   }
-
 }
-
