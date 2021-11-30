@@ -1,7 +1,8 @@
 # RideEveryRoad
 
 Latest Azure Deployment: 30/11/2021 - 14:41
-[Launch](https://stackblitz.com/github/adj97/RideEveryRoad){: .btn}
+
+<a href="https://rideeveryroad.azurewebsites.net/"><button class="btn">Launch</button></a>
 
 ---
 
