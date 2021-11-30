@@ -29,10 +29,17 @@ export class LandingPageComponent implements OnInit {
     ];
 
     let qp = ['authorize'];
+    
+    let redirect_uri_components = [
+      'http:/',
+      'localhost:4200',
+      'exchange_token'
+    ];
+
     const params_dict = {
       client_id: 49912,
       response_type: 'code',
-      redirect_uri: ['http:/', 'localhost:4200', 'exchange_token'].join('/'),
+      redirect_uri: redirect_uri_components.join('/'),
       approval_prompt: 'force',
       scope: ['read', 'activity:read_all', 'activity:read'].join(',')
     };
