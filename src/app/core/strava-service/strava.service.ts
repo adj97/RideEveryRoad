@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { SummaryActivity } from '../../shared/models/strava/activity';
+import { SummaryActivity } from '../../shared/models/strava/summaryactivity';
 
 import { Observable } from 'rxjs';
 

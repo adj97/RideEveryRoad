@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { } from 'googlemaps';
-import { SummaryActivity } from 'src/app/shared/models/strava/activity';
+import { SummaryActivity } from 'src/app/shared/models/strava/summaryactivity';
 import { StravaService } from '../../core/strava-service/strava.service';
 
 @Component({
