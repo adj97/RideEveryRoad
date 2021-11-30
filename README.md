@@ -1,6 +1,9 @@
 # RideEveryRoad
 
-##[Open in StackBlitz (WIP)](https://stackblitz.com/github/adj97/RideEveryRoad)
+Latest Azure Deployment: 30/11/2021 - 14:41
+[Launch](https://stackblitz.com/github/adj97/RideEveryRoad){: .btn}
+
+---
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.5.
 
