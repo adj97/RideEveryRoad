@@ -1,5 +1,7 @@
 # RideEveryRoad
 
+[![Test, build and deploy to Azure webapp](https://github.com/adj97/RideEveryRoad/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/adj97/RideEveryRoad/actions/workflows/main.yml)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.5.
 
 ## Development server
