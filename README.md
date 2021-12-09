@@ -1,10 +1,7 @@
 # RideEveryRoad
 
-Latest Azure Deployment: 30/11/2021 - 14:41
-
-<a href="https://rideeveryroad.azurewebsites.net/">Launch</a>
-
----
+[![azure](https://img.shields.io/badge/Azure%20Web%20App-Launch-blue.svg?style=flat)](https://rideeveryroad.azurewebsites.net/)
+[![main](https://github.com/adj97/RideEveryRoad/actions/workflows/main.yml/badge.svg)](https://github.com/adj97/RideEveryRoad/actions/workflows/main.yml)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.5.
 
