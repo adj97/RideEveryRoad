@@ -54,30 +54,40 @@ export class MapPageComponent implements OnInit {
   }
 
   PlotResults(){
-    console.log("PlotResults");
+    // get a polyline summary
+    var polyline_string = this.activities[0].map.summary_polyline;
 
-    var polyline = this.activities[0].map.summary_polyline;
-    console.log(polyline);
-    const polyline_decrypted = google.maps.geometry.encoding.decodePath(polyline);
-    console.log(polyline_decrypted);
+    // decode and refactor custom function
+    var coordinates = this._decodePolyline(polyline_string)
 
-    const flightPlanCoordinates = [
-      { lat: 51.507570, lng: -0.137811 },
-      { lat: 51.607570, lng: -0.147811 },
-      { lat: 51.707570, lng: -0.157811 },
-      { lat: 51.587570, lng: -0.167811 },
-      { lat: 51.407570, lng: -0.177811 },
-      { lat: 51.557570, lng: -0.187811 },
-      { lat: 51.527570, lng: -0.1987811 }
-    ];
+    // add google maps polyline
     const flightPath = new google.maps.Polyline({
-      path: flightPlanCoordinates,
+      path: coordinates,
       geodesic: true,
       strokeColor: "#FF0000",
       strokeOpacity: 1.0,
       strokeWeight: 2,
+      map: this.map
     });
-  
-    flightPath.setMap(this.map);
+  }
+
+  // encoding/decoding module object
+  polyline = require('@mapbox/polyline')
+
+  _decodePolyline(polylinestring: string){
+    // decode using the above module object
+    var polyline_string_decoded = this.polyline.decode(polylinestring)
+
+    // convert type into dict-array
+    const flightPlanCoordinates = [];
+    for (var i in polyline_string_decoded){
+      flightPlanCoordinates.push(
+        { 
+          lat: polyline_string_decoded[i][0],
+          lng: polyline_string_decoded[i][1]
+        })
+    }
+
+    return flightPlanCoordinates
   }
 }
