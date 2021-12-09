@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/b511f485-e61c-405c-bb32-d46bb230efca/resourceGroups/RideEveryRoad/providers/Microsoft.Web/sites/RideEveryRoad",
+    "appService.deploySubpath": "dist\\RideEveryRoad"
+}

@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ExchangetokenPageComponent } from './exchangetoken-page/exchangetoken-page.component';
-import { LandingPageComponent } from './landing-page/landing-page.component';
-import { MapPageComponent } from './map-page/map-page.component';
+import { ExchangetokenPageComponent } from './features/exchangetoken-page/exchangetoken-page.component';
+import { LandingPageComponent } from './features/landing-page/landing-page.component';
+import { MapPageComponent } from './features/map-page/map-page.component';
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent },

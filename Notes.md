@@ -4,3 +4,4 @@
  - [Google API Key Docs](https://developers.google.com/maps/documentation/javascript/get-api-key)
  - [Strava OAuth](https://developers.strava.com/docs/getting-started/#oauth)
  - [Angular docs: Routing](https://angular.io/guide/router#snapshot-the-no-observable-alternative)
+ - [Strava API and SDK Reference](https://developers.strava.com/docs/reference/)

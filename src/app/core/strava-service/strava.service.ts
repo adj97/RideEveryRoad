@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { SummaryActivity } from '../../shared/models/strava/summaryactivity';
+
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +28,7 @@ export class StravaService {
       });
   }
 
-  async sendGetRequest(_access_token: string) {
+  getHeroes(_access_token: string): Observable<SummaryActivity[]> {
     const headerDict = {
       'Authorization': 'Bearer ' + _access_token,
     };
@@ -35,10 +38,6 @@ export class StravaService {
     };
 
     const url = 'https://www.strava.com/api/v3/athlete/activities';
-
-    return await this.httpClient
-      .get(url, requestOptions)
-      .toPromise()
-      .then((res: any) => { return res })
+    return this.httpClient.get<SummaryActivity[]>(url, requestOptions);
   }
 }
