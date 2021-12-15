@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { SummaryActivity } from '../../shared/models/strava/summaryactivity';
 
-import { Observable } from 'rxjs';
+import { firstValueFrom, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -20,12 +20,9 @@ export class StravaService {
       code: _code,
       grant_type: "authorization_code"
     }
-    return await this.httpClient
-      .post('https://www.strava.com/api/v3/oauth/token', body)
-      .toPromise()
-      .then((res: any) => {
-        return res.access_token
-      });
+
+    const post$ = this.httpClient.post('https://www.strava.com/api/v3/oauth/token', body);
+    return await firstValueFrom(post$).then((res: any) => { return res.access_token });
   }
 
   getHeroes(_access_token: string): Observable<SummaryActivity[]> {
