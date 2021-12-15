@@ -11,14 +11,16 @@ export class StravaService {
 
   constructor(private httpClient: HttpClient) { }
 
-  clientid = '49912';
+  _client_id = '49912';
+  _client_secret = '84a5e674f6276b6da4d5a2a318624704e6c0546d';
+  _grant_type = 'authorization_code';
 
-  async getAccessToken(_clientid: string, _code: string){
+  async getAccessToken(code: string){
     const body = {
-      client_id: _clientid,
-      client_secret: "84a5e674f6276b6da4d5a2a318624704e6c0546d",
-      code: _code,
-      grant_type: "authorization_code"
+      client_id: this._client_id,
+      client_secret: this._client_secret,
+      code: code,
+      grant_type: this._grant_type
     }
 
     const post$ = this.httpClient.post('https://www.strava.com/api/v3/oauth/token', body);

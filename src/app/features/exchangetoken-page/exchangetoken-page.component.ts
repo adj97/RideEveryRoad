@@ -49,7 +49,7 @@ export class ExchangetokenPageComponent implements OnInit {
   }
 
   async GetAccessToken(){
-    this.access_token = await this.stravaService.getAccessToken(this.stravaService.clientid, this.code);
+    this.access_token = await this.stravaService.getAccessToken(this.code);
     console.log("Access token :" + this.access_token);
   }
 
