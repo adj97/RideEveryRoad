@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { SummaryActivity } from '../../shared/models/strava/summaryactivity';
 
 import { Observable } from 'rxjs';
@@ -29,12 +29,12 @@ export class StravaService {
   }
 
   getHeroes(_access_token: string): Observable<SummaryActivity[]> {
-    const headerDict = {
-      'Authorization': 'Bearer ' + _access_token,
-    };
-
     const requestOptions = {
-      headers: new HttpHeaders(headerDict),
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer ' + _access_token
+      }),
+      params: new HttpParams()
+        .set('per_page', 200)
     };
 
     const url = 'https://www.strava.com/api/v3/athlete/activities';
