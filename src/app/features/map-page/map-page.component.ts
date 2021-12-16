@@ -44,9 +44,10 @@ export class MapPageComponent implements OnInit {
   print: string;
 
   async MakeApiCall() {
-    this.dialog.open(DialogComponent);
+    const dialogRef = this.dialog.open(DialogComponent);
     let response = await this.stravaService.getAllActivities(this.access_token)
     this.activities = response;
+    dialogRef.close();
   }
 
   ShowResults(){
