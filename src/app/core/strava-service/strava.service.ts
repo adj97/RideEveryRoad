@@ -27,7 +27,7 @@ export class StravaService {
     return await firstValueFrom(post$).then((res: any) => { return res.access_token });
   }
 
-  async getHeroes(_access_token: string){
+  async getActivities(_access_token: string){
     const requestOptions = {
       headers: new HttpHeaders({
         'Authorization': 'Bearer ' + _access_token
