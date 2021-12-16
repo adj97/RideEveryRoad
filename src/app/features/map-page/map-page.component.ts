@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { } from 'googlemaps';
 import { SummaryActivity } from 'src/app/shared/models/strava/summaryactivity';
 import { StravaService } from '../../core/strava-service/strava.service';
+import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-map-page',
@@ -16,7 +18,7 @@ export class MapPageComponent implements OnInit {
   map: google.maps.Map;
   bounds: google.maps.LatLngBounds;
   
-  constructor(private stravaService: StravaService, private router: Router) {
+  constructor(private stravaService: StravaService, private router: Router, public dialog: MatDialog) {
     const navigation = this.router.getCurrentNavigation();
     const state = navigation.extras.state as {
       access_token: string
@@ -42,6 +44,7 @@ export class MapPageComponent implements OnInit {
   print: string;
 
   async MakeApiCall() {
+    this.dialog.open(DialogComponent);
     let response = await this.stravaService.getAllActivities(this.access_token)
     this.activities = response;
   }
