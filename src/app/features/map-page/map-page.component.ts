@@ -42,8 +42,8 @@ export class MapPageComponent implements OnInit {
   print: string;
 
   async MakeApiCall() {
-    let response = await this.stravaService.getActivities(this.access_token)
-    this.activities.push(...response);
+    let response = await this.stravaService.getAllActivities(this.access_token)
+    this.activities = response;
   }
 
   ShowResults(){

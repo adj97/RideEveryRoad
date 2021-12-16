@@ -27,13 +27,30 @@ export class StravaService {
     return await firstValueFrom(post$).then((res: any) => { return res.access_token });
   }
 
-  async getActivities(_access_token: string){
+  async getAllActivities(_access_token: string){
+
+    var activities: SummaryActivity[] = [];
+    var pagenumber = 1;
+    var response: any[];
+
+    do{
+      console.log(`getting page ${pagenumber}`)
+      response = await this.getActivities(_access_token, pagenumber)
+      activities.push(...response)
+      pagenumber++;
+    } while(response.length == 200)
+
+    return activities
+  }
+
+  async getActivities(_access_token: string, page: number){
     const requestOptions = {
       headers: new HttpHeaders({
         'Authorization': 'Bearer ' + _access_token
       }),
       params: new HttpParams()
         .set('per_page', 200)
+        .set('page', page)
     };
 
     const url = 'https://www.strava.com/api/v3/athlete/activities';
