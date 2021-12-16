@@ -42,10 +42,8 @@ export class MapPageComponent implements OnInit {
   print: string;
 
   async MakeApiCall() {
-    let response = this.stravaService.getHeroes(this.access_token)
-    response.subscribe(activities => {
-      this.activities = activities;
-    });
+    let response = await this.stravaService.getHeroes(this.access_token)
+    this.activities.push(...response);
   }
 
   ShowResults(){

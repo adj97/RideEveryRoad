@@ -27,7 +27,7 @@ export class StravaService {
     return await firstValueFrom(post$).then((res: any) => { return res.access_token });
   }
 
-  getHeroes(_access_token: string): Observable<SummaryActivity[]> {
+  async getHeroes(_access_token: string){
     const requestOptions = {
       headers: new HttpHeaders({
         'Authorization': 'Bearer ' + _access_token
@@ -37,6 +37,9 @@ export class StravaService {
     };
 
     const url = 'https://www.strava.com/api/v3/athlete/activities';
-    return this.httpClient.get<SummaryActivity[]>(url, requestOptions);
+
+    const get$ = this.httpClient.get<SummaryActivity[]>(url, requestOptions);
+    
+    return await firstValueFrom(get$)
   }
 }
