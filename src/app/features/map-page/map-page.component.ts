@@ -42,10 +42,8 @@ export class MapPageComponent implements OnInit {
   print: string;
 
   async MakeApiCall() {
-    let response = this.stravaService.getHeroes(this.access_token)
-    response.subscribe(activities => {
-      this.activities = activities;
-    });
+    let response = await this.stravaService.getAllActivities(this.access_token)
+    this.activities = response;
   }
 
   ShowResults(){
@@ -54,21 +52,30 @@ export class MapPageComponent implements OnInit {
   }
 
   PlotResults(){
-    // get a polyline summary
-    var polyline_string = this.activities[0].map.summary_polyline;
 
-    // decode and refactor custom function
-    var coordinates = this._decodePolyline(polyline_string)
+    for (var activity of this.activities){
 
-    // add google maps polyline
-    const flightPath = new google.maps.Polyline({
-      path: coordinates,
-      geodesic: true,
-      strokeColor: "#FF0000",
-      strokeOpacity: 1.0,
-      strokeWeight: 2,
-      map: this.map
-    });
+      // skip activities without a polyline
+      if (activity.map.summary_polyline == null){
+        continue
+      }
+
+      // get a polyline summary
+      var polyline_string = activity.map.summary_polyline;
+
+      // decode and refactor custom function
+      var coordinates = this._decodePolyline(polyline_string)
+
+      // add google maps polyline
+      const flightPath = new google.maps.Polyline({
+        path: coordinates,
+        geodesic: true,
+        strokeColor: "#FF0000",
+        strokeOpacity: 1.0,
+        strokeWeight: 2,
+        map: this.map
+      });
+    }
   }
 
   // encoding/decoding module object
