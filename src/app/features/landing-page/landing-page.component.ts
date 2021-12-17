@@ -13,12 +13,14 @@ export class LandingPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.setStravaOAuthUrlString();
   }
 
-  StravaOAuth() {
+  public stravaOAuthUrlString: string;
+
+  setStravaOAuthUrlString() {
     let redirect_base_uri = window.location.href.slice(0, -1);
-    let oauth_url = this.BuildStravaOAuthUrl(redirect_base_uri);
-    window.location.href = oauth_url;
+    this.stravaOAuthUrlString = this.BuildStravaOAuthUrl(redirect_base_uri);
   }
 
   BuildStravaOAuthUrl(redirect_base_uri: string): string {
