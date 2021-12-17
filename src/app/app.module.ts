@@ -13,12 +13,17 @@ import { MapPageComponent } from './features/map-page/map-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ExchangetokenPageComponent } from './features/exchangetoken-page/exchangetoken-page.component';
 
+import { MatDialogModule } from '@angular/material/dialog';
+import { DialogComponent } from './features/dialog/dialog.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
 @NgModule({
   declarations: [
     AppComponent,
     LandingPageComponent,
     MapPageComponent,
-    ExchangetokenPageComponent
+    ExchangetokenPageComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +31,9 @@ import { ExchangetokenPageComponent } from './features/exchangetoken-page/exchan
     BrowserAnimationsModule,
     RouterModule.forRoot([]),
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
