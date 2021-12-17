@@ -71,15 +71,23 @@ export class MapPageComponent implements OnInit {
       var coordinates = this._decodePolyline(polyline_string)
 
       // add google maps polyline
-      const flightPath = new google.maps.Polyline({
+      var flightPath = new google.maps.Polyline({
         path: coordinates,
         geodesic: true,
         strokeColor: "#FF0000",
-        strokeOpacity: 1.0,
-        strokeWeight: 2,
+        strokeOpacity: 0.4,
+        strokeWeight: 3,
         map: this.map
       });
+
+      this.attachActivityHyperlink(flightPath, activity.id);
     }
+  }
+
+  attachActivityHyperlink(polyline: google.maps.Polyline, activityid: number) {
+    polyline.addListener("click", () => {
+      window.open(`https://www.strava.com/activities/${activityid}`)
+    })
   }
 
   // encoding/decoding module object
