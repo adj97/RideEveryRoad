@@ -38,6 +38,12 @@ export class MapPageComponent implements OnInit {
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapProperties);
+    this.loadAndPlot();
+  }
+
+  async loadAndPlot(){
+    await this.MakeApiCall();
+    this.PlotResults();
   }
 
   activities: SummaryActivity[] = [];
