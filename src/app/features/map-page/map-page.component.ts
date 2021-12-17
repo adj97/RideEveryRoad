@@ -47,18 +47,12 @@ export class MapPageComponent implements OnInit {
   }
 
   activities: SummaryActivity[] = [];
-  print: string;
 
   async MakeApiCall() {
     const dialogRef = this.dialog.open(DialogComponent);
     let response = await this.stravaService.getAllActivities(this.access_token)
     this.activities = response;
     dialogRef.close();
-  }
-
-  ShowResults(){
-    this.print = this.activities[0].name;
-    console.log(this.print)
   }
 
   PlotResults(){
