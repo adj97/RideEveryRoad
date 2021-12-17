@@ -38,21 +38,21 @@ export class MapPageComponent implements OnInit {
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapProperties);
+    this.loadAndPlot();
+  }
+
+  async loadAndPlot(){
+    await this.MakeApiCall();
+    this.PlotResults();
   }
 
   activities: SummaryActivity[] = [];
-  print: string;
 
   async MakeApiCall() {
     const dialogRef = this.dialog.open(DialogComponent);
     let response = await this.stravaService.getAllActivities(this.access_token)
     this.activities = response;
     dialogRef.close();
-  }
-
-  ShowResults(){
-    this.print = this.activities[0].name;
-    console.log(this.print)
   }
 
   PlotResults(){
