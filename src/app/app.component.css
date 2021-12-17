@@ -227,6 +227,10 @@ footer {
     bottom: 5px
 }
 
+.container {
+    display: inline-flex;
+}
+
 footer a {
     display: flex;
     align-items: center;
