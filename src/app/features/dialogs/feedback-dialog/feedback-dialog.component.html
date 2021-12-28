@@ -1,15 +1,22 @@
 <h1 mat-dialog-title>Submit feature request or report a bug!</h1>
 <div mat-dialog-content>
-  <p>Title</p>
   <mat-form-field appearance="fill">
-    <mat-label>Title</mat-label>
+    <mat-label>Summary</mat-label>
+    <textarea matInput cdkTextareaAutosize maxlength="100"></textarea>
   </mat-form-field>
-  <p>Description</p>
+  <br>
   <mat-form-field appearance="fill">
     <mat-label>Description</mat-label>
+    <textarea matInput #input cdkTextareaAutosize maxlength="255" cdkAutosizeMinRows="3"></textarea>
+    <mat-hint align="end">{{input.value?.length || 0}}/255</mat-hint>
+  </mat-form-field>
+  <br>
+  <mat-form-field appearance="fill">
+    <mat-label>Name (optional)</mat-label>
+    <input matInput maxlength="20">
   </mat-form-field>
 </div>
 <div mat-dialog-actions class="flex-container">
-  <button mat-button (click)="onNoClick()" class="fadedbutton">Cancel</button>
-  <button mat-raised-button>Submit</button>
+  <button mat-button (click)="onCancelClick()" class="fadedbutton">Cancel</button>
+  <button mat-raised-button color="primary" (click)="onSubmitClick()">Submit</button>
 </div>
