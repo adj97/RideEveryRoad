@@ -1,1 +1,15 @@
-<p>feedback-dialog works!</p>
+<h1 mat-dialog-title>Submit feature request or report a bug!</h1>
+<div mat-dialog-content>
+  <p>Title</p>
+  <mat-form-field appearance="fill">
+    <mat-label>Title</mat-label>
+  </mat-form-field>
+  <p>Description</p>
+  <mat-form-field appearance="fill">
+    <mat-label>Description</mat-label>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions class="flex-container">
+  <button mat-button (click)="onNoClick()" class="fadedbutton">Cancel</button>
+  <button mat-raised-button>Submit</button>
+</div>
