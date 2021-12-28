@@ -16,11 +16,11 @@ export class AppComponent{
 
   constructor(public dialog: MatDialog) {}
 
-  openDialog(): void {
+  openFeedbackDialog(): void {
     const dialogRef = this.dialog.open(FeedbackDialogComponent);
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      console.log('App Component: The dialog was closed');
     });
   }
 
