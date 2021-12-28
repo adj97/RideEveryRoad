@@ -17,6 +17,7 @@ import { ExchangetokenPageComponent } from './features/exchangetoken-page/exchan
 import { DialogComponent } from './features/dialog/dialog.component';
 
 import {MaterialDesignModule} from '../materialdesign.module';
+import { FeedbackDialogComponent } from './feedback-dialog/feedback-dialog.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import {MaterialDesignModule} from '../materialdesign.module';
     LandingPageComponent,
     MapPageComponent,
     ExchangetokenPageComponent,
-    DialogComponent
+    DialogComponent,
+    FeedbackDialogComponent
   ],
   imports: [
     BrowserModule,
