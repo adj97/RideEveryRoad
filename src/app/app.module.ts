@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-
+import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -35,7 +35,8 @@ import { FeedbackDialogComponent } from './features/dialogs/feedback-dialog/feed
     RouterModule.forRoot([]),
     AppRoutingModule,
     HttpClientModule,
-    MaterialDesignModule
+    MaterialDesignModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
