@@ -17,7 +17,7 @@ import { ExchangetokenPageComponent } from './features/exchangetoken-page/exchan
 import { DialogComponent } from './features/dialog/dialog.component';
 
 import {MaterialDesignModule} from '../materialdesign.module';
-import { FeedbackDialogComponent } from './feedback-dialog/feedback-dialog.component';
+import { FeedbackDialogComponent } from './features/dialogs/feedback-dialog/feedback-dialog.component';
 
 
 @NgModule({
