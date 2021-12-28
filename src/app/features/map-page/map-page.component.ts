@@ -57,6 +57,14 @@ export class MapPageComponent implements OnInit {
 
   PlotResults(){
 
+    // bounds behavior
+    const bb_options = ["last", "all"]
+    const bb = bb_options[0]
+
+    // create blank bounds array
+    // extend to the min/max of each activity
+    var bounds = new google.maps.LatLngBounds()
+
     for (var activity of this.activities){
 
       // skip activities without a polyline
@@ -70,6 +78,23 @@ export class MapPageComponent implements OnInit {
       // decode and refactor custom function
       var coordinates = this._decodePolyline(polyline_string)
 
+      // get new latlngbounds
+      var lat = coordinates.map(function(p) {return p.lat});
+      var lng = coordinates.map(function(p) {return p.lng});
+      var min_coords = new google.maps.LatLng({
+        lat : Math.min.apply(null, lat),
+        lng : Math.min.apply(null, lng)
+      })
+      var max_coords = new google.maps.LatLng({
+          lat : Math.max.apply(null, lat),
+          lng : Math.max.apply(null, lng)
+      })
+      if (bb == bb_options[1]){
+        // show all data
+        bounds.extend(min_coords)
+        bounds.extend(max_coords)
+      }
+
       // add google maps polyline
       var flightPath = new google.maps.Polyline({
         path: coordinates,
@@ -82,6 +107,12 @@ export class MapPageComponent implements OnInit {
 
       this.attachActivityHyperlink(flightPath, activity.id);
     }
+
+    // apply bounds to your map
+    if (bb == bb_options[0]){
+      bounds = new google.maps.LatLngBounds(min_coords, max_coords)
+    } 
+    this.map.fitBounds(bounds); 
   }
 
   attachActivityHyperlink(polyline: google.maps.Polyline, activityid: number) {
