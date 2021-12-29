@@ -4,6 +4,7 @@ import { Platform } from "@angular/cdk/platform";
  * Class model for the feedback form dialog
  */
 export class feedbackForm{
+
     constructor(platformInfo: Platform, userAgent: string, date: Date){
         this.clientInfo = {
             platformInfo: platformInfo,
@@ -12,19 +13,27 @@ export class feedbackForm{
         this.timeStamp = date;
     }
 
+    /** Short feedback summary */
     summary: string;
+
+    /** Feedback description */
     description: string;
+
+    /** Feedback submitting user's name */
     name: string;
 
+    /** Feedback timestamp */
     timeStamp: Date;
 
+    /** Information about the client machine/operating system */
     clientInfo: {platformInfo: Platform, userAgent: string};
 
+    /** Is the feedback a feature request or bug report */
     feedbackType: string;
 
-    /** The unique identifier of the athlete */
-    id: number;
-
-    /** Resource state, indicates level of detail */
-    resource_state: number;
+    /** Checks the form object for validity criteria */
+    isValid(): boolean{
+        // needs to have summary
+        return this.summary != null;
+      }
 }
