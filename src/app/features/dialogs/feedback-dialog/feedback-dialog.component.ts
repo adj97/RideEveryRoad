@@ -20,11 +20,9 @@ export class FeedbackDialogComponent {
     private http: HttpClient
   ) { }
 
-  // feedbackForm = {summary: "", description: "", name: ""};
   feedbackForm = new feedbackForm(this.platform, navigator.userAgent, new Date());
 
   onCancelClick(): void {
-    console.log("Dialog: I have just closed")
     this.dialogRef.close();
   }
 
@@ -50,10 +48,6 @@ export class FeedbackDialogComponent {
         config: {duration: 3000}
       }
       this.snackBar.open(snackBar.message, snackBar.action, snackBar.config);
-
-      // console log information
-      console.log("Dialog: I have just submitted:");
-      console.log(this.feedbackForm)
 
       // close dialog
       this.dialogRef.close();
