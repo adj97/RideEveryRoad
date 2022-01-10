@@ -7,7 +7,10 @@
             <li><a routerLink="/map" routerLinkActive="active">Route: map</a></li>
         </ul>
     </nav> -->
-    <h1>{{title}}</h1>
+    <div class="flex-container">
+        <div><h1>{{title}}</h1></div>
+        <div><button mat-raised-button (click)="openFeedbackDialog()">Give Feedback!</button></div>
+      </div>
     <!-- The routed views render in the <router-outlet>-->
     <router-outlet></router-outlet>
 

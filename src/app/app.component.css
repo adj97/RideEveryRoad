@@ -231,6 +231,12 @@ footer {
     display: inline-flex;
 }
 
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
 footer a {
     display: flex;
     align-items: center;

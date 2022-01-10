@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-
+import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -17,6 +17,7 @@ import { ExchangetokenPageComponent } from './features/exchangetoken-page/exchan
 import { DialogComponent } from './features/dialog/dialog.component';
 
 import {MaterialDesignModule} from '../materialdesign.module';
+import { FeedbackDialogComponent } from './features/dialogs/feedback-dialog/feedback-dialog.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import {MaterialDesignModule} from '../materialdesign.module';
     LandingPageComponent,
     MapPageComponent,
     ExchangetokenPageComponent,
-    DialogComponent
+    DialogComponent,
+    FeedbackDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +35,8 @@ import {MaterialDesignModule} from '../materialdesign.module';
     RouterModule.forRoot([]),
     AppRoutingModule,
     HttpClientModule,
-    MaterialDesignModule
+    MaterialDesignModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

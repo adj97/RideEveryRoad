@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { FeedbackDialogComponent } from './features/dialogs/feedback-dialog/feedback-dialog.component';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +14,14 @@ export class AppComponent{
 
   title = 'Ride Every Road';
 
-  ngOnInit(): void {
+  constructor(public dialog: MatDialog) {}
+
+  openFeedbackDialog(): void {
+    const dialogRef = this.dialog.open(FeedbackDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('App Component: The dialog was closed');
+    });
   }
 
 }
