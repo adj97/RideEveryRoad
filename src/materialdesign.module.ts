@@ -5,7 +5,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatRadioModule } from '@angular/material/radio';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 @NgModule({
     exports: [
@@ -15,7 +15,7 @@ import { MatRadioModule } from '@angular/material/radio';
         MatFormFieldModule,
         MatInputModule,
         MatSnackBarModule,
-        MatRadioModule
+        MatButtonToggleModule
     ]
 })
 

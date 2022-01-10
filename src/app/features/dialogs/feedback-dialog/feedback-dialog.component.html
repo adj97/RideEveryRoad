@@ -2,11 +2,10 @@
 <div mat-dialog-content>
   <mat-label>Feedback type:</mat-label>
   <br>
-  <mat-radio-group [(ngModel)]="feedbackForm.feedbackType">
-    <mat-radio-button value="feature">New Feature </mat-radio-button>
-    <mat-radio-button value="bug">Bug</mat-radio-button>
-  </mat-radio-group>
-  <br><br>
+  <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+    <mat-button-toggle value="bold">New feature</mat-button-toggle>
+    <mat-button-toggle value="italic">Report a bug</mat-button-toggle>
+  </mat-button-toggle-group>
   <mat-form-field appearance="fill">
     <mat-label>Summary</mat-label>
     <textarea matInput placeholder="Add the title of your feedback" cdkTextareaAutosize maxlength="100"
