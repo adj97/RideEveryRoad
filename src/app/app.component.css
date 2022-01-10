@@ -237,6 +237,14 @@ footer {
     align-items: center;
   }
 
+.responsive {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    margin: 10px;
+    border: 5px
+}
+
 footer a {
     display: flex;
     align-items: center;
