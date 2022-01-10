@@ -65,7 +65,7 @@ export class MapPageComponent implements OnInit {
     // extend to the min/max of each activity
     var bounds = new google.maps.LatLngBounds()
 
-    for (var activity of this.activities){
+    for (var activity of this.activities.reverse()){
 
       // skip activities without a polyline
       if (activity.map.summary_polyline == null){
