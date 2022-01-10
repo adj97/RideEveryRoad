@@ -18,6 +18,7 @@ import { DialogComponent } from './features/dialog/dialog.component';
 
 import {MaterialDesignModule} from '../materialdesign.module';
 import { FeedbackDialogComponent } from './features/dialogs/feedback-dialog/feedback-dialog.component';
+import { StravaInfoDialogComponent } from './features/dialogs/stravainfo-dialog/stravainfo-dialog.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { FeedbackDialogComponent } from './features/dialogs/feedback-dialog/feed
     MapPageComponent,
     ExchangetokenPageComponent,
     DialogComponent,
-    FeedbackDialogComponent
+    FeedbackDialogComponent,
+    StravaInfoDialogComponent
   ],
   imports: [
     BrowserModule,
