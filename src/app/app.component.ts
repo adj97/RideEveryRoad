@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { FeedbackDialogComponent } from './features/dialogs/feedback-dialog/feedback-dialog.component';
+import { StravaInfoDialogComponent } from './features/dialogs/stravainfo-dialog/stravainfo-dialog.component';
 
 @Component({
   selector: 'app-root',
@@ -22,6 +23,10 @@ export class AppComponent{
     dialogRef.afterClosed().subscribe(result => {
       console.log('App Component: The dialog was closed');
     });
+  }
+
+  showStravaDialog(): void {
+    const dialogRef = this.dialog.open(StravaInfoDialogComponent);
   }
 
 }
