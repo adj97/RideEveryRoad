@@ -72,6 +72,10 @@ svg.material-icons {
     width: auto;
 }
 
+a.title:link, a.title:visited, a.title:hover {
+    color: black
+}
+
 svg.material-icons:not(:last-child) {
     margin-right: 8px;
 }
