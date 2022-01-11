@@ -1,16 +1,16 @@
 <div class="content" role="main">
-
-    <!-- <nav *ngIf="nav">
-        <ul>
-            <li><a routerLink="/" routerLinkActive="active">Route: root</a></li>
-            <li><a routerLink="/exchange_token" routerLinkActive="active">Route: exchange_token</a></li>
-            <li><a routerLink="/map" routerLinkActive="active">Route: map</a></li>
-        </ul>
-    </nav> -->
     <div class="flex-container">
-        <div><h1>{{title}}</h1></div>
-        <div><button mat-raised-button (click)="openFeedbackDialog()">Give Feedback!</button></div>
-      </div>
+        <div>
+            <a class="title" routerLink="/" routerLinkActive="active">
+                <h1>{{title}}</h1>
+            </a>
+        </div>
+        <div>
+            <button mat-raised-button (click)="openFeedbackDialog()">
+                Give Feedback!
+            </button>
+        </div>
+    </div>
     <!-- The routed views render in the <router-outlet>-->
     <router-outlet></router-outlet>
 

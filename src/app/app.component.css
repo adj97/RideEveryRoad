@@ -72,6 +72,10 @@ svg.material-icons {
     width: auto;
 }
 
+a.title:link, a.title:visited, a.title:hover {
+    color: black
+}
+
 svg.material-icons:not(:last-child) {
     margin-right: 8px;
 }
@@ -241,8 +245,8 @@ footer {
     width: 100%;
     max-width: 400px;
     height: auto;
-    margin: 10px;
-    border: 5px
+    margin: 15px;
+    border-radius: 15%;
 }
 
 footer a {

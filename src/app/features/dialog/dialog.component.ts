@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dialog',
@@ -7,6 +8,8 @@ import { Component } from '@angular/core';
 })
 export class DialogComponent{
 
-  constructor() { }
+  constructor(private dialogRef: MatDialogRef<DialogComponent>){
+    dialogRef.disableClose = true;
+  }
 
 }
