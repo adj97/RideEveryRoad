@@ -50,6 +50,7 @@ export class ExchangetokenPageComponent implements OnInit {
 
   async GetAccessToken(){
     this.access_token = await this.stravaService.getAccessToken(this.code);
+    this.stravaService.cache_access_token(this.access_token);
     console.log("Access token :" + this.access_token);
   }
 

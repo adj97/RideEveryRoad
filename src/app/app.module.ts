@@ -20,6 +20,8 @@ import {MaterialDesignModule} from '../materialdesign.module';
 import { FeedbackDialogComponent } from './features/dialogs/feedback-dialog/feedback-dialog.component';
 import { StravaInfoDialogComponent } from './features/dialogs/stravainfo-dialog/stravainfo-dialog.component';
 
+import { CookieService } from 'ngx-cookie-service';
+
 
 @NgModule({
   declarations: [
@@ -40,7 +42,7 @@ import { StravaInfoDialogComponent } from './features/dialogs/stravainfo-dialog/
     MaterialDesignModule,
     FormsModule
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
