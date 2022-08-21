@@ -14,6 +14,7 @@ export class LandingPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.setStravaOAuthUrlString();
+    this.stravaService.try_auth_from_cache();
   }
 
   public stravaOAuthUrlString: string;

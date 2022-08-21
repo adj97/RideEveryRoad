@@ -3,17 +3,35 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { SummaryActivity } from '../../shared/models/strava/summaryactivity';
 
 import { firstValueFrom, Observable } from 'rxjs';
+import { CookieService } from '../cookie-service/cookie-service.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StravaService {
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(
+    private httpClient: HttpClient,
+    private cookieService: CookieService) { }
 
   _client_id = '49912';
   _client_secret = '84a5e674f6276b6da4d5a2a318624704e6c0546d';
   _grant_type = 'authorization_code';
+
+  oauth_token: string;
+
+  try_auth_from_cache() {
+    if (this.cookieService.check_exists('oauth_token')) {
+      console.log('authenticate using cached token')
+      this.oauth_token = this.cookieService.read('oauth_token')
+    } else {
+      console.log('there is no cached oauth token')
+    }
+  }
+
+  cache_access_token(token: string) {
+    this.cookieService.create('oauth_token',token);
+  }
 
   async getAccessToken(code: string){
     const body = {

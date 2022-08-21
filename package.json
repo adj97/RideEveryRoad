@@ -27,6 +27,7 @@
     "@googlemaps/polyline-codec": "^1.0.12",
     "@mapbox/polyline": "^1.1.1",
     "@types/googlemaps": "^3.43.3",
+    "ngx-cookie-service": "^13.2.1",
     "rxjs": "^7.4.0",
     "tslib": "^2.3.1",
     "zone.js": "~0.11.4"
