@@ -27,12 +27,24 @@ export class MapPageComponent implements OnInit {
   gm_center_lng = -0.127811;
 
   ngOnInit(): void {
+    // initialise map
     const mapProperties = {
       center: new google.maps.LatLng(this.gm_center_lat,this.gm_center_lng),
       zoom: 13,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapProperties);
+
+    // if no polylines
+    // go and get all activity data
+
+    // if there are cached polylines
+    // read all the data & parse
+    // determine the last pulled activity
+    // request data from that date onwards
+    // append to cached data in session
+    // append to cached data in cache
+    // plot total results
     this.loadAndPlot();
   }
 
