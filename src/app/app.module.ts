@@ -14,7 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ExchangetokenPageComponent } from './features/exchangetoken-page/exchangetoken-page.component';
 
 
-import { DialogComponent } from './features/dialog/dialog.component';
+import { SpinnerDialog } from './features/dialogs/spinner-dialog/spinner-dialog.component';
 
 import {MaterialDesignModule} from '../materialdesign.module';
 import { FeedbackDialogComponent } from './features/dialogs/feedback-dialog/feedback-dialog.component';
@@ -29,7 +29,7 @@ import { CookieService } from 'ngx-cookie-service';
     LandingPageComponent,
     MapPageComponent,
     ExchangetokenPageComponent,
-    DialogComponent,
+    SpinnerDialog,
     FeedbackDialogComponent,
     StravaInfoDialogComponent
   ],

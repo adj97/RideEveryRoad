@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { } from 'googlemaps';
 import { SummaryActivity } from 'src/app/shared/models/strava/summaryactivity';
 import { StravaService } from '../../core/strava-service/strava.service';
-import { DialogComponent } from '../dialog/dialog.component';
+import { SpinnerDialog } from '../dialogs/spinner-dialog/spinner-dialog.component';
 
 @Component({
   selector: 'app-map-page',
@@ -49,7 +49,7 @@ export class MapPageComponent implements OnInit {
   activities: SummaryActivity[] = [];
 
   async MakeApiCall() {
-    const dialogRef = this.dialog.open(DialogComponent);
+    const dialogRef = this.dialog.open(SpinnerDialog);
     let response = await this.stravaService.getAllActivities(this.access_token)
     this.activities = response;
     dialogRef.close();

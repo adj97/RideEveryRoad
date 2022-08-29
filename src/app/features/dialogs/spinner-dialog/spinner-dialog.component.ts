@@ -3,10 +3,10 @@ import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dialog',
-  templateUrl: './dialog.component.html',
+  templateUrl: './spinner-dialog.component.html',
   styleUrls: ['../../app.component.css']
 })
-export class DialogComponent{
+export class SpinnerDialog{
 
   constructor(private dialogRef: MatDialogRef<DialogComponent>){
     dialogRef.disableClose = true;
