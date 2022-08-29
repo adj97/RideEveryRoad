@@ -8,8 +8,8 @@ export class CookieService {
 
   constructor(private ngxCookieService: NgxCookieService) { }
 
-  create (cookie_name: string, cookie_value: string) {
-    this.ngxCookieService.set(cookie_name,cookie_value,{expires:2});
+  write (cookie_name: string, cookie_value: string) {
+    this.ngxCookieService.set(cookie_name,cookie_value);
   }
 
   check_exists (cookie_name: string) {
