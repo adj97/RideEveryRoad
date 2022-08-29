@@ -316,3 +316,7 @@ svg#clouds {
         visibility: hidden;
     }
 }
+
+.clickable {
+    cursor: pointer;
+}
