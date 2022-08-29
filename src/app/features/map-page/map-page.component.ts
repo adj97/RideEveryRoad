@@ -17,17 +17,12 @@ export class MapPageComponent implements OnInit {
   @ViewChild('map', { static: true }) mapElement: any;
   map: google.maps.Map;
   bounds: google.maps.LatLngBounds;
-  
-  constructor(private stravaService: StravaService, private router: Router, public dialog: MatDialog) {
-    const navigation = this.router.getCurrentNavigation();
-    const state = navigation.extras.state as {
-      access_token: string
-    };
-    console.log("Access token : " + state.access_token);
-    this.access_token = state.access_token;
-  }
 
-  access_token:string;
+  constructor(
+    private stravaService: StravaService,
+    public dialog: MatDialog) { 
+    }
+
   gm_center_lat = 51.507570;
   gm_center_lng = -0.127811;
 
@@ -50,7 +45,7 @@ export class MapPageComponent implements OnInit {
 
   async MakeApiCall() {
     const dialogRef = this.dialog.open(SpinnerDialog);
-    let response = await this.stravaService.getAllActivities(this.access_token)
+    let response = await this.stravaService.getAllActivities()
     this.activities = response;
     dialogRef.close();
   }
