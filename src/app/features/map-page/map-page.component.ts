@@ -63,7 +63,7 @@ export class MapPageComponent implements OnInit {
     for (var activity of this.activities.reverse()){
 
       // skip activities without a polyline
-      if (activity.map.summary_polyline == null){
+      if (activity.map == null){
         continue
       }
 
