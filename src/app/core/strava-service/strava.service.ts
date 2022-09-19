@@ -100,7 +100,7 @@ export class StravaService {
       );
 
       // save oauth refresh token in local browser cookies
-      this.cookieService.write('oauth_refresh_token', this.refresh_token);
+      this.cookieService.write('oauth_refresh_token', this.refresh_token, 365);
   }
 
   oauth_url(): string {
