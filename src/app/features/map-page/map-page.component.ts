@@ -37,8 +37,9 @@ export class MapPageComponent implements OnInit {
   }
 
   async loadAndPlot(){
-    await this.MakeApiCall();
+    let loadingDialogRef = await this.MakeApiCall();
     this.PlotResults();
+    loadingDialogRef.close();
   }
 
   activities: SummaryActivity[] = [];
@@ -47,7 +48,7 @@ export class MapPageComponent implements OnInit {
     const dialogRef = this.dialog.open(SpinnerDialog);
     let response = await this.stravaService.getAllActivities()
     this.activities = response;
-    dialogRef.close();
+    return dialogRef
   }
 
   PlotResults(){
