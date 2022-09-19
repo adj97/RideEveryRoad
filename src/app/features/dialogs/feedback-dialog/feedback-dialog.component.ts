@@ -36,9 +36,7 @@ export class FeedbackDialogComponent {
         this.feedbackForm,
         { 'headers': headers }
       ).subscribe(
-        response => {
-          console.log(response);
-        }
+        response => {}
       );
 
       // give user confirmation
