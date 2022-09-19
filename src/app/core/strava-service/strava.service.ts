@@ -33,7 +33,6 @@ export class StravaService {
     var response: any[];
 
     do{
-      console.log(`getting page ${pagenumber}`)
       response = await this.getActivities(this.access_token, pagenumber)
       activities.push(...response)
       pagenumber++;
@@ -69,14 +68,12 @@ export class StravaService {
   }
 
   async update_tokens(): Promise<void> {
-    console.log('updating token')
     await this.oauth_token_request({
       client_id: this._client_id,
       client_secret: this._client_secret,
       grant_type: "refresh_token",
       refresh_token: this.refresh_token
     });
-    console.log('token updated')
   }
 
   async get_access_token(): Promise<void> {

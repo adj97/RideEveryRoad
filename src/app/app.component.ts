@@ -20,9 +20,7 @@ export class AppComponent{
   openFeedbackDialog(): void {
     const dialogRef = this.dialog.open(FeedbackDialogComponent);
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('App Component: The dialog was closed');
-    });
+    dialogRef.afterClosed().subscribe(result => {});
   }
 
   showStravaDialog(): void {
