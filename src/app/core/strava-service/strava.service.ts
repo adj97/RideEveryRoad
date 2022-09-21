@@ -112,4 +112,42 @@ export class StravaService {
   initiate_oauth_flow(): void {
     window.location.href = this.oauth_url();
   }
+
+  async get_activities_since(date: Date){
+
+    var activities: SummaryActivity[] = [];
+    var pagenumber = 1;
+    var response: any[];
+
+    var after_date_epoch = date.getTime()/1000
+
+    do{
+      console.log(`getting page ${pagenumber}`)
+      response = await this.get_activities_with_params(pagenumber, after_date_epoch)
+      console.log(response)
+      activities.push(...response)
+      pagenumber++;
+    } while(response.length == 200)
+
+    return activities.sort((a,b)=>(a.start_date > b.start_date) ? 1: -1)
+
+  }
+
+  async get_activities_with_params(page: number = 1, after: number){
+    const requestOptions = {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer ' + this.access_token
+      }),
+      params: new HttpParams()
+        .set('per_page', 200)
+        .set('page', page)
+        .set('after', after)
+    };
+
+    const url = 'https://www.strava.com/api/v3/athlete/activities';
+
+    const get$ = this.httpClient.get<SummaryActivity[]>(url, requestOptions);
+
+    return await firstValueFrom(get$)
+  }
 }

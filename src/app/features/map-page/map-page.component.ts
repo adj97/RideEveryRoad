@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
 import { } from 'googlemaps';
+import { LocalstorageService } from 'src/app/core/localstorage-service/localstorage.service';
 import { SummaryActivity } from 'src/app/shared/models/strava/summaryactivity';
 import { StravaService } from '../../core/strava-service/strava.service';
 import { SpinnerDialog } from '../dialogs/spinner-dialog/spinner-dialog.component';
@@ -16,54 +16,61 @@ export class MapPageComponent implements OnInit {
 
   @ViewChild('map', { static: true }) mapElement: any;
   map: google.maps.Map;
-  bounds: google.maps.LatLngBounds;
+  activities: SummaryActivity[] = [];
+
+  // encoding/decoding module object
+  polyline = require('@mapbox/polyline')
 
   constructor(
     private stravaService: StravaService,
-    public dialog: MatDialog) { 
+    private dialog: MatDialog,
+    private localStorageService: LocalstorageService
+  ) { }
+
+  async ngOnInit(){
+    const loading_dialog_ref = this.dialog.open(SpinnerDialog);
+
+    this.map = this._initialise_map()
+
+    // read localstorage data
+    // save last_pulled_date for pulling efficiency
+    var raw_cached_data: string = this.localStorageService.get('cached_activity_data')
+    if (raw_cached_data) {
+      var cached_activity_data: SummaryActivity[] = JSON.parse(raw_cached_data)
+      var last_pulled_date = new Date(cached_activity_data[cached_activity_data.length-1].start_date)
+    } else {
+      var cached_activity_data: SummaryActivity[] = []
+      var last_pulled_date = new Date(2000,1,1)
     }
 
-  gm_center_lat = 51.507570;
-  gm_center_lng = -0.127811;
+    var new_activity_data = await this.stravaService.get_activities_since(last_pulled_date)
 
-  ngOnInit(): void {
-    // initialise map
-    const mapProperties = {
-      center: new google.maps.LatLng(this.gm_center_lat,this.gm_center_lng),
-      zoom: 13,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-    this.map = new google.maps.Map(this.mapElement.nativeElement, mapProperties);
+    // append new data to cached activities array
+    this.activities = cached_activity_data.concat(new_activity_data)
 
-    // if no polylines
-    // go and get all activity data
+    // update localstorage with last pulled
+    this.localStorageService.delete('cached_activity_data')
+    this.localStorageService.write('cached_activity_data', JSON.stringify(this.activities))
 
-    // if there are cached polylines
-    // read all the data & parse
-    // determine the last pulled activity
-    // request data from that date onwards
-    // append to cached data in session
-    // append to cached data in cache
-    // plot total results
-    this.loadAndPlot();
+    this._plot_results()
+
+    loading_dialog_ref.close();
   }
 
-  async loadAndPlot(){
-    let loadingDialogRef = await this.MakeApiCall();
-    this.PlotResults();
-    loadingDialogRef.close();
+  _initialise_map(){
+    const zoom_level: number = 13;
+    const center_lat: number = 51.507570;
+    const center_lng: number = -0.127811;
+    const map_type: string = google.maps.MapTypeId.ROADMAP;
+
+    return new google.maps.Map(this.mapElement.nativeElement, {
+      center: new google.maps.LatLng(center_lat, center_lng),
+      zoom: zoom_level,
+      mapTypeId: map_type
+    });
   }
 
-  activities: SummaryActivity[] = [];
-
-  async MakeApiCall() {
-    const dialogRef = this.dialog.open(SpinnerDialog);
-    let response = await this.stravaService.getAllActivities()
-    this.activities = response;
-    return dialogRef
-  }
-
-  PlotResults(){
+  _plot_results(){
 
     // bounds behavior
     const bb_options = ["last", "all"]
@@ -73,10 +80,12 @@ export class MapPageComponent implements OnInit {
     // extend to the min/max of each activity
     var bounds = new google.maps.LatLngBounds()
 
-    for (var activity of this.activities.reverse()){
+    for (var activity of this.activities){
 
       // skip activities without a polyline
       if (activity.map == null){
+        continue
+      } else if (activity.map.summary_polyline == ""){
         continue
       }
 
@@ -84,7 +93,7 @@ export class MapPageComponent implements OnInit {
       var polyline_string = activity.map.summary_polyline;
 
       // decode and refactor custom function
-      var coordinates = this._decodePolyline(polyline_string)
+      var coordinates = this._decode_polyline(polyline_string)
 
       // get new latlngbounds
       var lat = coordinates.map(function(p) {return p.lat});
@@ -113,7 +122,7 @@ export class MapPageComponent implements OnInit {
         map: this.map
       });
 
-      this.attachActivityHyperlink(flightPath, activity.id);
+      this._attach_activity_hyperlink(flightPath, activity.id);
     }
 
     // apply bounds to your map
@@ -123,16 +132,13 @@ export class MapPageComponent implements OnInit {
     this.map.fitBounds(bounds); 
   }
 
-  attachActivityHyperlink(polyline: google.maps.Polyline, activityid: number) {
+  _attach_activity_hyperlink(polyline: google.maps.Polyline, activityid: number) {
     polyline.addListener("click", () => {
       window.open(`https://www.strava.com/activities/${activityid}`)
     })
   }
 
-  // encoding/decoding module object
-  polyline = require('@mapbox/polyline')
-
-  _decodePolyline(polylinestring: string){
+  _decode_polyline(polylinestring: string){
     // decode using the above module object
     var polyline_string_decoded = this.polyline.decode(polylinestring)
 
