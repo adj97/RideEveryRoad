@@ -1,9 +1,8 @@
 name: Test, build and deploy to Azure webapp 
 
 on:
-  push:
-    branches:
-      - main
+  pull_request:
+    types: [opened, edited]
 
 env:
   AZURE_WEBAPP_NAME: RideEveryRoad                       # set this to your application's name
