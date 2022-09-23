@@ -5,6 +5,7 @@ import { SummaryActivity } from '../../shared/models/strava/summaryactivity';
 import { catchError, first, firstValueFrom, Observable, throwError } from 'rxjs';
 import { CookieService } from '../cookie-service/cookie-service.service';
 import { NavigationExtras, Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 // let instances = [];
 
@@ -23,8 +24,8 @@ export class StravaService {
     private cookieService: CookieService
   ) { }
 
-  _client_id = '49912';
-  _client_secret = '84a5e674f6276b6da4d5a2a318624704e6c0546d';
+  _client_id: string = environment.app_client.id;
+  _client_secret: string = environment.app_client.secret;
 
   async getAllActivities(){
 
