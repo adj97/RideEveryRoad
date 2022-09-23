@@ -6,6 +6,7 @@ import { LocalstorageService } from 'src/app/core/localstorage-service/localstor
 import { SummaryActivity } from 'src/app/shared/models/strava/summaryactivity';
 import { StravaService } from '../../core/strava-service/strava.service';
 import { SpinnerDialog } from '../dialogs/spinner-dialog/spinner-dialog.component';
+import { CryptoService } from 'src/app/core/crypto-service/crypto.service';
 
 @Component({
   selector: 'app-map-page',
@@ -17,6 +18,7 @@ export class MapPageComponent implements OnInit {
   @ViewChild('map', { static: true }) mapElement: any;
   map: google.maps.Map;
   activities: SummaryActivity[] = [];
+  encryption_key: string = "E2XNdpaAVDaAHkrzjuar"
 
   // encoding/decoding module object
   polyline = require('@mapbox/polyline')
@@ -24,7 +26,8 @@ export class MapPageComponent implements OnInit {
   constructor(
     private stravaService: StravaService,
     private dialog: MatDialog,
-    private localStorageService: LocalstorageService
+    private localStorageService: LocalstorageService,
+    private cryptoService: CryptoService
   ) { }
 
   async ngOnInit(){
@@ -50,7 +53,7 @@ export class MapPageComponent implements OnInit {
 
     // update localstorage with last pulled
     this.localStorageService.delete('cached_activity_data')
-    this.localStorageService.write('cached_activity_data', JSON.stringify(this.activities))
+    this.localStorageService.write('cached_activity_data', this.activities)
 
     this._plot_results()
 
