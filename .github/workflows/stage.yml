@@ -2,7 +2,7 @@ name: Stage changes in PR before deploying
 
 on:
   pull_request:
-    types: [opened, edited]
+    types: [opened, synchronize]
 
 env:
   NODE_VERSION: '12.x'                                   # set this to the node version to use
