@@ -1,0 +1,38 @@
+name: Stage changes in PR before deploying
+
+on:
+  pull_request:
+    types: [opened, edited]
+
+env:
+  NODE_VERSION: '12.x'                                   # set this to the node version to use
+
+jobs:
+  build: 
+    name: Test and build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@main
+    - name: Use Node ${{ env.NODE_VERSION }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+    - name: Install dependencies
+      run: npm ci
+    - name: Build
+      run: npm run build-prod
+    # - name: Test
+    #   run: npm run test:ci
+    - name: Archive build
+      if: success()
+      uses: actions/upload-artifact@v1
+      with:
+        name: dist
+        path: dist
+    # - name: Archive code coverage result
+    #   if: success()
+    #   uses: actions/upload-artifact@v1
+    #   with:
+    #     name: coverage
+    #     path: coverage
