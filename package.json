@@ -8,8 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build-prod": "ng build --prod",
-    "build:ci": "ng build --prod --sourceMap=false --base-href /rideveryroad/",
+    "build-prod": "ng build --configuration production",
+    "build:ci": "ng build --configuration production --sourceMap=false --base-href /rideveryroad/",
     "test:ci": "ng test --browsers=ChromeHeadless --watch=false --code-coverage --source-map true"
   },
   "private": true,
