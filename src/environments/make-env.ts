@@ -8,7 +8,7 @@ const dev_build_env = (env_argument: string) => {
       targetPath += '.ts';
     } else if (env_argument == "prod"){
       //make a blank environment.ts file
-      writeFile(targetPath + '.ts','')
+      writeFile(`${targetPath}.ts`,'', ()=>{})
       // but add our github secret environment variables to the prod env spec
       targetPath += '.prod.ts';
     } else {
