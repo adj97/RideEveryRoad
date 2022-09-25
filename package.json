@@ -3,13 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "npm run config dev && ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build-prod": "npm run config && ng build --configuration production",
-    "config": "ts-node src/environments/scripts/prod-build-env.ts",
+    "build-prod": "ng build --configuration production",
+    "config": "ts-node src/environments/make-env.ts",
     "build:ci": "ng build --configuration production --sourceMap=false --base-href /rideveryroad/",
     "test:ci": "ng test --browsers=ChromeHeadless --watch=false --code-coverage --source-map true"
   },
